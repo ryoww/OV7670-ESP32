@@ -13,7 +13,7 @@
 #include "esp_log.h"
 #include <WiFi.h>
 #include <WiFiMulti.h>
-#include "hwcrypto/sha.h"
+#include "esp32/sha.h"
 #include "base64.h"
 #include <OV7670.h>
 
@@ -48,20 +48,20 @@ const camera_config_t cam_conf = {
 //#define CAM_HEIGHT	480			// カメラ高さ
 //#define CAM_DIV			 12			// １画面分割数
 
-//#define CAM_RES			CIF			// カメラ解像度
-//#define CAM_WIDTH		352			// カメラ幅
-//#define CAM_HEIGHT	288			// カメラ高さ
-//#define CAM_DIV				4			// １画面分割数
+#define CAM_RES			CIF			// カメラ解像度
+#define CAM_WIDTH		352			// カメラ幅
+#define CAM_HEIGHT	288			// カメラ高さ
+#define CAM_DIV				4			// １画面分割数
 
 //#define CAM_RES			QVGA		// カメラ解像度
 //#define CAM_WIDTH		320			// カメラ幅
 //#define CAM_HEIGHT	240			// カメラ高さ
 //#define CAM_DIV				3			// １画面分割数
 
-#define CAM_RES			QCIF		// カメラ解像度
-#define CAM_WIDTH		176			// カメラ幅
-#define CAM_HEIGHT	144			// カメラ高さ
-#define CAM_DIV				1			// １画面分割数
+// #define CAM_RES			QCIF		// カメラ解像度
+// #define CAM_WIDTH		176			// カメラ幅
+// #define CAM_HEIGHT	144			// カメラ高さ
+// #define CAM_DIV				1			// １画面分割数
 
 //#define CAM_RES			QQVGA		// カメラ解像度
 //#define CAM_WIDTH		160			// カメラ幅
@@ -77,9 +77,9 @@ boolean WS_on = false;		// WS設定が済んだかどうかのフラグ
 WiFiMulti wifiMulti;
 
 bool wifi_connect(){
-	wifiMulti.addAP("your-ssid_1", "password_1");		// 接続予定のWiFiアクセスポイントを登録
-	wifiMulti.addAP("your-ssid_2", "password_2");
-	wifiMulti.addAP("your-ssid_3", "password_3");
+	wifiMulti.addAP("SSID: F660A-KDNq-G", "xgbkx3za");		// 接続予定のWiFiアクセスポイントを登録
+	// wifiMulti.addAP("your-ssid_2", "password_2");
+	// wifiMulti.addAP("your-ssid_3", "password_3");
 
 
 	Serial.println(F("Connecting Wifi..."));
@@ -87,7 +87,7 @@ bool wifi_connect(){
 			WiFi.config( myIP, myGateway, IPAddress(255,255,255,0));	//固定IPアドレスにする
 		
 			Serial.println(F("--- WiFi connected ---"));
-  		Serial.print(F("SSID: "));
+  		Serial.print(F("SSID: F660A-KDNq-G"));
   		Serial.println( WiFi.SSID() );
 			Serial.print(F("IP Address: "));
 			Serial.println( WiFi.localIP() );
